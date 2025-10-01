@@ -1,0 +1,36 @@
+name: 'pharma_be'
+
+services:
+  api:
+    build:
+      context: ../
+      dockerfile: deployments/prod.Dockerfile
+    container_name: solar_design_be_api
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_SSL=${DB_SSL}
+      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
+      - ACCESS_TOKEN_EXPIRATION=${ACCESS_TOKEN_EXPIRATION}
+      - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
+      - REFRESH_TOKEN_EXPIRATION=${REFRESH_TOKEN_EXPIRATION}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_CLIENT_CALLBACK_URL=${GOOGLE_CLIENT_CALLBACK_URL}
+      - GOOGLE_REDIRECT_URL=${GOOGLE_REDIRECT_URL}
+    ports:
+      - 8080:8080
+    <<: &default_logging
+      logging:
+        driver: 'json-file'
+        options:
+          max-size: '200k'
+          max-file: '10'
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2G # Allocate 2 GB of RAM
+          cpus: '1.0' # Allocate 1.0 CPUs
