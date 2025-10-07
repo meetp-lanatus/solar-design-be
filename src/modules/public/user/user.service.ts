@@ -53,7 +53,7 @@ export class UserService {
       )
     }
 
-    const userRole = await this.findRoleByName(RoleEnum.USER)
+    const userRole = await this.findRoleByName(RoleEnum.CUSTOMER)
     const userTenant = await this.tenantService.findOne(signupDto.tenantId)
 
     const newUserSchema = this.userRepository.create({
@@ -188,25 +188,33 @@ export class UserService {
       .leftJoinAndSelect('userTenantRelation.tenant', 'tenant')
 
     for (const filterParam of filterParams) {
+      if (filterParam.fieldName === 'role') {
+        query.andWhere('role.name = :role', {
+          role: RoleEnum.CUSTOMER,
+        })
+      }
+
       if (filterParam.fieldName === '_search' && filterParam.value) {
-        // use raw SQL for where clause
         query.andWhere(
-          `users.first_name ilike :search OR users.last_name ilike :search OR users.email ilike :search`,
+          `(users.first_name ILIKE :search OR users.last_name ILIKE :search OR users.email ILIKE :search)`,
           {
             search: `%${filterParam.value}%`,
           },
         )
       }
+
       if (filterParam.fieldName === 'nonSuperUser') {
         query.andWhere('role.name != :role', {
           role: RoleEnum.SUPER_ADMIN,
         })
       }
+
       if (filterParam.fieldName === 'tenantId') {
         query.andWhere('tenant.id = :tenantId', {
           tenantId: filterParam.value,
         })
       }
+
       if (filterParam.fieldName === 'filterMe') {
         query.andWhere('users.user_id != :userId', {
           userId: filterParam.value,
@@ -257,7 +265,7 @@ export class UserService {
     ]
 
     // restrict super-admin user for non-super-admin user
-    if ([RoleEnum.USER, RoleEnum.ADMIN].includes(currentUserRoleName)) {
+    if ([RoleEnum.CUSTOMER, RoleEnum.ADMIN].includes(currentUserRoleName)) {
       filterParams = [
         ...filterParams,
         {

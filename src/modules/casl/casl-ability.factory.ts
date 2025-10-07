@@ -63,11 +63,11 @@ export class CaslAbilityFactory {
     if (userTenantRoleName.includes(RoleEnum.ADMIN)) {
       allow<FlatUserTenantRelation>(Action.Create, UserTenantRelation, {
         'tenant.id': Number(tenantId),
-        'role.name': { $in: [RoleEnum.USER, RoleEnum.ADMIN] },
+        'role.name': { $in: [RoleEnum.CUSTOMER, RoleEnum.ADMIN] },
       })
       allow<FlatUserTenantRelation>(Action.Update, UserTenantRelation, {
         'tenant.id': Number(tenantId),
-        'role.name': { $in: [RoleEnum.USER, RoleEnum.ADMIN] },
+        'role.name': { $in: [RoleEnum.CUSTOMER, RoleEnum.ADMIN] },
       })
 
       allow(Action.Manage, User)
@@ -76,7 +76,7 @@ export class CaslAbilityFactory {
       allow(Action.Read, Role)
     }
 
-    if (userTenantRoleName.includes(RoleEnum.USER)) {
+    if (userTenantRoleName.includes(RoleEnum.CUSTOMER)) {
       allow(Action.Read, User, { userId: currentUser.userId })
       allow(Action.Update, User, { userId: currentUser.userId })
 

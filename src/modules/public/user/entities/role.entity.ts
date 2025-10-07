@@ -9,7 +9,7 @@ import { UserTenantRelation } from './user-tenant-relation.entity'
 export enum RoleEnum {
   SUPER_ADMIN = 'super-admin',
   ADMIN = 'admin',
-  USER = 'user',
+  CUSTOMER = 'customer',
 }
 
 @Entity({
