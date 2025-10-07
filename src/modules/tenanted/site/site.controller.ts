@@ -12,7 +12,7 @@ import { CreateSiteDto } from './dto/create-site.dto'
 import { UpdateSiteDto } from './dto/update-site.dto'
 import { SiteService } from './site.service'
 
-@Controller('site')
+@Controller('sites')
 export class SiteController {
   constructor(private readonly siteService: SiteService) {}
 
