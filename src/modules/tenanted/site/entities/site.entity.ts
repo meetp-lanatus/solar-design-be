@@ -8,7 +8,6 @@ import {
 
 import { DateEntity } from '../../../../common/entities/date.entity'
 import { User } from '../../../public/user/entities/user.entity'
-import { Location } from '../../location/entities/location.entity'
 
 export enum SiteTypeEnum {
   RESIDENTIAL = 'residential',
@@ -30,6 +29,56 @@ export class Site extends DateEntity {
     primaryKeyConstraintName: 'PK_sites_id',
   })
   id: string
+
+  @Column('decimal', {
+    name: 'latitude',
+    precision: 10,
+    scale: 7,
+  })
+  lat: number
+
+  @Column('decimal', {
+    name: 'longitude',
+    precision: 10,
+    scale: 7,
+  })
+  long: number
+
+  @Column({
+    name: 'address1',
+    type: 'varchar',
+    length: 255,
+  })
+  address1: string
+
+  @Column({
+    name: 'address2',
+    type: 'varchar',
+    length: 255,
+    nullable: true,
+  })
+  address2: string
+
+  @Column({
+    name: 'city',
+    type: 'varchar',
+    length: 255,
+  })
+  city: string
+
+  @Column({
+    name: 'state',
+    type: 'varchar',
+    length: 255,
+  })
+  state: string
+
+  @Column({
+    name: 'pinCode',
+    type: 'varchar',
+    length: 255,
+  })
+  pinCode: string
 
   @Column({
     name: 'name',
@@ -77,8 +126,4 @@ export class Site extends DateEntity {
   @ManyToOne(() => User, { nullable: false })
   @JoinColumn({ name: 'user_id' })
   user: User
-
-  @ManyToOne(() => Location, { nullable: false })
-  @JoinColumn({ name: 'location_id' })
-  location: Location
 }

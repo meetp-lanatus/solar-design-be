@@ -15,7 +15,6 @@ import { UserController } from '@modules/public/user/user.controller'
 import { UserModule } from '@modules/public/user/user.module'
 import { TenancyMiddleware } from '@modules/tenancy/tenancy.middleware'
 import { TenancyModule } from '@modules/tenancy/tenancy.module'
-import { LocationModule } from '@modules/tenanted/location/location.module'
 import { SiteModule } from '@modules/tenanted/site/site.module'
 
 import { AppController } from './app.controller'
@@ -60,7 +59,6 @@ import { AppService } from './app.service'
     TenancyModule,
     CacheModule,
     SiteModule,
-    LocationModule,
   ],
   controllers: [AppController],
   providers: [
