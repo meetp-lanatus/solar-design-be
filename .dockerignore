@@ -1,0 +1,13 @@
+.git
+.github
+.husky
+deployments
+dist
+node_modules
+test
+.env*
+.eslint*
+.gitignore
+.gitattributes
+.prettier*
+README.md
