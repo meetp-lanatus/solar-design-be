@@ -15,6 +15,7 @@ import { UserController } from '@modules/public/user/user.controller'
 import { UserModule } from '@modules/public/user/user.module'
 import { TenancyMiddleware } from '@modules/tenancy/tenancy.middleware'
 import { TenancyModule } from '@modules/tenancy/tenancy.module'
+import { SiteController } from '@modules/tenanted/site/site.controller'
 import { SiteModule } from '@modules/tenanted/site/site.module'
 
 import { AppController } from './app.controller'
@@ -74,7 +75,7 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(TenancyMiddleware)
-      .forRoutes(UserController)
+      .forRoutes(UserController, SiteController)
       .apply(LoggerMiddleware)
       .forRoutes('*')
   }

@@ -56,13 +56,10 @@ export class CaslAbilityFactory {
     if (!userTenantRelation) {
       forbid(Action.Manage, 'all')
     }
-    console.log(userTenantRelation)
 
     const userTenantRoleName = userTenantRelation.role.name
 
     if (userTenantRoleName.includes(RoleEnum.SUPER_ADMIN)) {
-      console.log('call super admin', userTenantRoleName)
-
       allow(Action.Manage, 'all')
     }
 

@@ -26,7 +26,7 @@ export class Grid extends DateEntity {
     precision: 10,
     scale: 2,
   })
-  height_mm: number
+  heightMm: number
 
   @Column({
     name: 'width_mm',
@@ -34,7 +34,7 @@ export class Grid extends DateEntity {
     precision: 10,
     scale: 2,
   })
-  width_mm: number
+  widthMm: number
 
   @Column({
     name: 'rows',
@@ -101,7 +101,7 @@ export class Grid extends DateEntity {
     precision: 5,
     scale: 2,
   })
-  module_efficiency: number
+  moduleEfficiency: number
 
   @ManyToOne(() => Site, { nullable: false })
   @JoinColumn({ name: 'site_id' })

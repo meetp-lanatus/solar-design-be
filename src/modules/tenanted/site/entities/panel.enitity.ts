@@ -24,13 +24,13 @@ export class Panel extends DateEntity {
     name: 'row_no',
     type: 'int',
   })
-  row_no: number
+  rowNo: number
 
   @Column({
     name: 'column_no',
     type: 'int',
   })
-  column_no: number
+  columnNo: number
 
   @Column({
     name: 'position',

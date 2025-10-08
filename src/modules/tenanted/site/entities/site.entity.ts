@@ -30,14 +30,16 @@ export class Site extends DateEntity {
   })
   id: string
 
-  @Column('decimal', {
+  @Column({
+    type: 'decimal',
     name: 'latitude',
     precision: 10,
     scale: 7,
   })
   lat: number
 
-  @Column('decimal', {
+  @Column({
+    type: 'decimal',
     name: 'longitude',
     precision: 10,
     scale: 7,
