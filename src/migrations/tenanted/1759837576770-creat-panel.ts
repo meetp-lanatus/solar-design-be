@@ -19,7 +19,7 @@ export class CreatPanel1759837576770 implements MigrationInterface {
         "created_at" TIMESTAMP NOT NULL DEFAULT now(),
         "updated_at" TIMESTAMP NOT NULL DEFAULT now(),
         CONSTRAINT "PK_panels_id" PRIMARY KEY ("id"),
-       CONSTRAINT "FK_panels_grid_id" FOREIGN KEY ("grid_id") REFERENCES "${schema}"."grids"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+       CONSTRAINT "FK_panels_grid_id" FOREIGN KEY ("grid_id") REFERENCES "${schema}"."grids"("id") ON DELETE CASCADE ON UPDATE NO ACTION
       );
     `)
   }

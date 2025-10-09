@@ -7,8 +7,7 @@ import {
 } from 'typeorm'
 
 import { DateEntity } from '../../../../common/entities/date.entity'
-
-import { Site } from './site.entity'
+import { Site } from '../../site/entities/site.entity'
 
 @Entity({
   name: 'grids',
@@ -19,6 +18,30 @@ export class Grid extends DateEntity {
     primaryKeyConstraintName: 'PK_grids_id',
   })
   id: string
+
+  @Column({
+    type: 'decimal',
+    name: 'latitude',
+    precision: 10,
+    scale: 7,
+  })
+  lat: number
+
+  @Column({
+    type: 'decimal',
+    name: 'longitude',
+    precision: 10,
+    scale: 7,
+  })
+  long: number
+
+  @Column({
+    type: 'decimal',
+    name: 'rotate',
+    precision: 10,
+    scale: 7,
+  })
+  rotate: number
 
   @Column({
     name: 'height_mm',
@@ -103,7 +126,7 @@ export class Grid extends DateEntity {
   })
   moduleEfficiency: number
 
-  @ManyToOne(() => Site, { nullable: false })
+  @ManyToOne(() => Site, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'site_id' })
   site: Site
 }

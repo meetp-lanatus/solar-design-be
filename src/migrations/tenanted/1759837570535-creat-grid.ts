@@ -27,7 +27,7 @@ export class CreatGrid1759837570535 implements MigrationInterface {
         "created_at" TIMESTAMP NOT NULL DEFAULT now(),
         "updated_at" TIMESTAMP NOT NULL DEFAULT now(),
         CONSTRAINT "PK_grids_id" PRIMARY KEY ("id"),
-        CONSTRAINT "FK_grids_site_id" FOREIGN KEY ("site_id") REFERENCES "${schema}"."sites"("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT "FK_grids_site_id" FOREIGN KEY ("site_id") REFERENCES "${schema}"."sites"("id") ON DELETE CASCADE ON UPDATE NO ACTION
       );
     `)
   }

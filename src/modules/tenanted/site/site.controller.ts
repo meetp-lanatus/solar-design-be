@@ -28,7 +28,7 @@ import { SiteService } from './site.service'
 @Controller('sites')
 @UseGuards(UserTennatsGuard)
 @UseGuards(PoliciesGuard)
-@ApiTags('sites')
+@ApiTags('Sites')
 @ApiBearerAuth()
 @ApiHeader({
   name: TENANT_HEADER,

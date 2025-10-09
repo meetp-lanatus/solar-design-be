@@ -142,7 +142,6 @@ export class SiteService {
   ): Promise<Site> {
     const site = await this.findOne(id, user)
 
-    // Handle customer reassignment
     if (updateSiteDto.customerId) {
       const userTenantRelation = user.userTenantRelation.find(
         (relation) => relation.tenant.id === Number(tenantId),
@@ -194,7 +193,6 @@ export class SiteService {
       site.user = customer
     }
 
-    // Remove customerId from update data to avoid conflicts
     const { customerId, ...updateData } = updateSiteDto
 
     Object.assign(site, updateData)

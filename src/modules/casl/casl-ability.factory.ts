@@ -11,6 +11,7 @@ import { Tenant } from '@modules/public/tenant/entities/tenant.entity'
 import { Role, RoleEnum } from '@modules/public/user/entities/role.entity'
 import { User } from '@modules/public/user/entities/user.entity'
 import { UserTenantRelation } from '@modules/public/user/entities/user-tenant-relation.entity'
+import { Grid } from '@modules/tenanted/grid/entities/grid.entity'
 import { Site } from '@modules/tenanted/site/entities/site.entity'
 
 import { Action } from './action.enum'
@@ -29,6 +30,8 @@ export type Subjects =
       | UserTenantRelation
       | typeof Site
       | Site
+      | typeof Grid
+      | Grid
     >
 
 export type AppAbility = Ability<[Action, Subjects]>

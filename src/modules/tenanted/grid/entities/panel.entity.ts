@@ -38,7 +38,7 @@ export class Panel extends DateEntity {
   })
   position: number
 
-  @ManyToOne(() => Grid, { nullable: false })
+  @ManyToOne(() => Grid, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'grid_id' })
   grid: Grid
 }
