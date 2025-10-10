@@ -12,6 +12,7 @@ import { User } from '../../../public/user/entities/user.entity'
 export enum SiteTypeEnum {
   RESIDENTIAL = 'residential',
   COMMERCIAL = 'commercial',
+  INDUSTRIAL = 'industrial',
 }
 
 export enum EstimatePowerUnit {
