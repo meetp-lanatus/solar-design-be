@@ -327,7 +327,7 @@ export class GridService {
     // Find all children that have this grid as parent
     await this.gridRepository.update(
       { parentGrid: { id: id } },
-      { parentGrid: null },
+      { parentGrid: null, offsetX: 0, offsetY: 0 },
     )
 
     // Delete the grid and its panels
