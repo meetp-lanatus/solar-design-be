@@ -21,6 +21,11 @@ export class CreateSiteDto {
   @IsLongitude()
   long: number
 
+  @ApiProperty({ description: 'Rotate coordinate', example: 335.0973 })
+  @IsOptional()
+  @IsNumber()
+  rotate?: number
+
   @ApiProperty({ description: 'Primary address', example: '123 Main Street' })
   @IsString()
   address1: string

@@ -14,7 +14,6 @@ export class CreatPanel1759837576770 implements MigrationInterface {
         "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
         "row_no" int NOT NULL,
         "column_no" int NOT NULL,
-        "position" int NOT NULL,
         "grid_id" uuid NOT NULL,
         "created_at" TIMESTAMP NOT NULL DEFAULT now(),
         "updated_at" TIMESTAMP NOT NULL DEFAULT now(),

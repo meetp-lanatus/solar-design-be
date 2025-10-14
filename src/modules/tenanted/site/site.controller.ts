@@ -25,16 +25,15 @@ import { UpdateSiteDto } from './dto/update-site.dto'
 import { Site } from './entities/site.entity'
 import { SiteService } from './site.service'
 
-@Controller('sites')
 @UseGuards(UserTennatsGuard)
 @UseGuards(PoliciesGuard)
 @ApiTags('Sites')
-@ApiBearerAuth()
 @ApiHeader({
   name: TENANT_HEADER,
   description: 'tenant header',
   required: true,
 })
+@Controller('sites')
 export class SiteController {
   constructor(private readonly siteService: SiteService) {}
 

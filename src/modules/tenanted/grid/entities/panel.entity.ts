@@ -32,12 +32,6 @@ export class Panel extends DateEntity {
   })
   columnNo: number
 
-  @Column({
-    name: 'position',
-    type: 'int',
-  })
-  position: number
-
   @ManyToOne(() => Grid, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'grid_id' })
   grid: Grid

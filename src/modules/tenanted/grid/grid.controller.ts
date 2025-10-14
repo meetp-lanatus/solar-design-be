@@ -68,11 +68,6 @@ export class GridController {
     return this.gridService.findAll(siteId)
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.gridService.findOne(id)
-  }
-
   @Patch(':id')
   update(
     @Param('siteId') siteId: string,

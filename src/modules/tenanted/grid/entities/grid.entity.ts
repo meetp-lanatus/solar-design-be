@@ -3,6 +3,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm'
 
@@ -42,6 +43,32 @@ export class Grid extends DateEntity {
     scale: 7,
   })
   rotate: number
+
+  @Column({
+    type: 'decimal',
+    name: 'offset_x',
+    precision: 10,
+    scale: 7,
+  })
+  offsetX: number
+
+  @Column({
+    type: 'decimal',
+    name: 'offset_y',
+    precision: 10,
+    scale: 7,
+  })
+  offsetY: number
+
+  @ManyToOne(() => Grid, (grid) => grid.children, {
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'parent_grid_id' })
+  parentGrid: Grid
+
+  @OneToMany(() => Grid, (grid) => grid.parentGrid)
+  children: Grid[]
 
   @Column({
     name: 'height_mm',

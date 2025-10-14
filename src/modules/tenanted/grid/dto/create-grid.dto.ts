@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsInt, IsLatitude, IsNumber, IsString } from 'class-validator'
+import {
+  IsInt,
+  IsLatitude,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator'
 
 export class CreateGridDto {
   @ApiProperty({
@@ -20,8 +26,31 @@ export class CreateGridDto {
     description: 'Rotate coordinate',
     example: 335.0973,
   })
+  @IsOptional()
   @IsNumber()
-  rotate: number
+  rotate?: number
+
+  @ApiProperty({
+    description: 'Offset X coordinate',
+    example: 0,
+  })
+  @IsNumber()
+  offsetX: number
+
+  @ApiProperty({
+    description: 'Offset Y coordinate',
+    example: 0,
+  })
+  @IsNumber()
+  offsetY: number
+
+  @ApiProperty({
+    description: 'Parent grid ID',
+    example: '4097025f-0d8d-4269-b141-89d2ac16f7a7',
+  })
+  @IsOptional()
+  @IsString()
+  parentGridId?: string | null
 
   @ApiProperty({
     description: 'Height in millimeters',

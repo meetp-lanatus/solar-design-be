@@ -48,6 +48,14 @@ export class Site extends DateEntity {
   long: number
 
   @Column({
+    type: 'decimal',
+    name: 'rotate',
+    precision: 10,
+    scale: 7,
+  })
+  rotate: number
+
+  @Column({
     name: 'address1',
     type: 'varchar',
     length: 255,
