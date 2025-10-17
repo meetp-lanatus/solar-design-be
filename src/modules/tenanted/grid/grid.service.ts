@@ -154,6 +154,7 @@ export class GridService {
     }
     const grids = await this.gridRepository.find({
       where: { site: { id: siteId } },
+      relations: ['panels'],
       loadRelationIds: {
         relations: ['parentGrid'],
       },

@@ -10,6 +10,8 @@ import {
 import { DateEntity } from '../../../../common/entities/date.entity'
 import { Site } from '../../site/entities/site.entity'
 
+import { Panel } from './panel.entity'
+
 @Entity({
   name: 'grids',
 })
@@ -156,4 +158,7 @@ export class Grid extends DateEntity {
   @ManyToOne(() => Site, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'site_id' })
   site: Site
+
+  @OneToMany(() => Panel, (panel) => panel.grid)
+  panels: Panel[]
 }
